@@ -48,7 +48,6 @@ public class SelenideTest {
             $(withText("#" + ISSUE)).should(Condition.exist);
         });
     }
-
 }
 
 
