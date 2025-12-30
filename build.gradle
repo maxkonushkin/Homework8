@@ -29,6 +29,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'com.codeborne:selenide:7.0.1'
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
+    testImplementation 'org.aspectj:aspectjweaver:1.9.25.1'
 }
 
 test {
