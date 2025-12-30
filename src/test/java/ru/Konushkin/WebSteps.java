@@ -20,7 +20,6 @@ public class WebSteps {
         open("https://github.com");
     }
 
-
     @Step("Ищем репозиторий {repo}")
     public void searchForRepository(String repo) {
         $(".header-search-input").click();
