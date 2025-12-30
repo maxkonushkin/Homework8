@@ -47,6 +47,7 @@ public class SelenideTest {
         step("Проверяем наличие Issue с номером " + ISSUE, () -> {
             $(withText("#" + ISSUE)).should(Condition.exist);
         });
+
     }
 }
 
