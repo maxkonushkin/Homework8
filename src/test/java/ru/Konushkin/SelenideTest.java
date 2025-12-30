@@ -15,7 +15,6 @@ public class SelenideTest {
     private static final String REPOSITORY = "eroshenkoam/allure-example";
     private static final int ISSUE = 80;
 
-
     @Test
     public void testIssueSearch(){
         SelenideLogger.addListener("allure", new AllureSelenide());
