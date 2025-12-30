@@ -26,7 +26,6 @@ public class SelenideTest {
         $(withText("#80")).should(Condition.exist);
     }
 
-
     @Test
     public void testLambdaStep() {
         SelenideLogger.addListener("allure", new AllureSelenide());
