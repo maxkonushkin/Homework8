@@ -12,19 +12,19 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SelenideTest {
 
-    private static final String REPOSITORY = "eroshenkoam/allure-example";
-    private static final int ISSUE = 80;
+    private static final String REPOSITORY = "maxkonushkin/Homework8";
+    private static final int ISSUE = 2;
 
     @Test
     public void testIssueSearch(){
         SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://github.com");
         $(".search-input").click();
-        $("#query-builder-test").sendKeys("eroshenkoam/allure-example");
+        $("#query-builder-test").sendKeys("maxkonushkin/Homework8");
         $("#query-builder-test").submit();
-        $(linkText("eroshenkoam/allure-example")).click();
-        $("issues-tab").click();
-        $(withText("#80")).should(Condition.exist);
+        $(linkText("maxkonushkin/Homework8")).click();
+        $("#issues-tab").click();
+        $(withText("#2")).should(Condition.exist);
     }
 
     @Test
