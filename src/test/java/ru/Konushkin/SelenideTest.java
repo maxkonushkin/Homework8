@@ -1,8 +1,11 @@
 package ru.Konushkin;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selectors.withText;
 import static io.qameta.allure.Allure.step;
@@ -15,10 +18,19 @@ public class SelenideTest {
     private static final String REPOSITORY = "maxkonushkin/Homework8";
     private static final int ISSUE = 2;
 
+    @BeforeAll
+    public static void init(){
+        Configuration.baseUrl = "https://github.com";
+    }
+
+    @BeforeEach
+    public void initEach(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
     @Test
     public void testIssueSearch(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
-        open("https://github.com");
+        open("");
         $(".search-input").click();
         $("#query-builder-test").sendKeys("maxkonushkin/Homework8");
         $("#query-builder-test").submit();
@@ -29,10 +41,8 @@ public class SelenideTest {
 
     @Test
     public void testLambdaStep() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
         step("Открываем главную страницу", () -> {
-            open("https://github.com");
+            open("");
         });
         step("Ищем репозиторий " + REPOSITORY, () -> {
             $(".search-input").click();
@@ -53,9 +63,7 @@ public class SelenideTest {
 
     @Test
     public void testAnnotatedStep() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         WebSteps steps = new WebSteps();
-
         steps.openMainPage();
         steps.searchForRepository(REPOSITORY);
         steps.clickOnRepositoryLink(REPOSITORY);
